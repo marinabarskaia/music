@@ -1,0 +1,10 @@
+<h5>Music List</h5>
+<ul *ngFor="let item of list$ | async">
+    <h5>{{item.name}}</h5>
+    <li>{{item.description }}</li>
+
+    <li>{{item.album | json }}</li>
+    <li>{{item.artist | json}}</li>
+
+    
+</ul>
