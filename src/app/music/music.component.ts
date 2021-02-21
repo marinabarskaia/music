@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MusicListService, Imusic} from '../app/services/music-list.service';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-music',
@@ -10,23 +11,14 @@ import { Observable } from 'rxjs';
 
 export class MusicComponent implements OnInit {
 
-  list$: Imusic[];
+  list$: Observable<Imusic[]>;
 
-  constructor(private musicService: MusicListService 
-    ) {}
-    getKeys(obj){
-      return Object.keys(obj)
-    }
-
-  ngOnInit(): void {
-    
-    this.musicService.getMusic().subscribe((data )=> {
-      console.log(data);
-    this.list$ = data });
- 
-  
-  
+  constructor(private musicService: MusicListService) {}
    
+    
+  ngOnInit() {
+    this.list$ = this.musicService.getMusic().pipe(
+      map(item => item)
+    );
   }
-
 }
