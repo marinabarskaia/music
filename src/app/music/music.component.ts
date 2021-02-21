@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./music.component.css']
 })
 
+
 export class MusicComponent implements OnInit {
 
   list$: Observable<Imusic[]>;

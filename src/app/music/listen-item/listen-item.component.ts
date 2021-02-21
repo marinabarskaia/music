@@ -19,7 +19,6 @@ export class ListenItemComponent implements OnInit {
   constructor(private musicService: MusicListService,
         private route: ActivatedRoute) {}
   
-
   ngOnInit(){
     this.item.midiID = this.route.snapshot.paramMap.get(this.midiID);  
     this.item.name = this.route.snapshot.paramMap.get(this.name);  
