@@ -5,7 +5,7 @@ import {
   Imusic
 } from "../../app/services/music-list.service";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+
 
 @Component({
   selector: "app-listen-item",
@@ -15,7 +15,6 @@ import { map } from "rxjs/operators";
 export class ListenItemComponent implements OnInit {
   item$: Observable<Imusic>;
   
-
   constructor(
     private musicService: MusicListService,
     private route: ActivatedRoute
@@ -25,14 +24,13 @@ export class ListenItemComponent implements OnInit {
 
   ngOnInit() {
 
-    this.route.params.subscribe(params =>
-        this.item$ = this.musicService.getItem(params.midiID);
-       
+    this.route.params.subscribe(item =>
+
+        this.item$ = this.musicService.getItem(item.midiID)
+        
     );
-    
-    
-  }
-  
+   
+    }
 
 }
 

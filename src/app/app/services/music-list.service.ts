@@ -29,8 +29,9 @@ export class MusicListService {
     return this.http.get<Imusic[]>(this.dataUrl);
   }
 
-  getItem(midiID: Observable<Imusic>){
-   return this.http.get('https://us-east1-pianocrumbs-258021.cloudfunctions.net/get-song/midiID');
+  getItem(midiID:string): Observable<Imusic> {
+   return this.http.get<Imusic>
+   ('https://us-east1-pianocrumbs-258021.cloudfunctions.net/get-song/${midiID}');
   }
 
 }
