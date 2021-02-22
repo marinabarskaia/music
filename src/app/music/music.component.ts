@@ -18,8 +18,6 @@ export class MusicComponent implements OnInit {
    
     
   ngOnInit() {
-    this.list$ = this.musicService.getMusic().pipe(
-      map(item => item)
-    );
+    this.list$ = this.musicService.getMusic();
   }
 }

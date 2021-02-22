@@ -22,15 +22,15 @@ export interface Imusic {
 export class MusicListService {
   dataUrl = "https://us-east1-pianocrumbs-258021.cloudfunctions.net/get-songs";
 
-
+  //dataSingleUrl = 'https://us-east1-pianocrumbs-258021.cloudfunctions.net/get-song';
   constructor(private http: HttpClient) {}
 
   getMusic(): Observable<Imusic[]> {
     return this.http.get<Imusic[]>(this.dataUrl);
   }
 
-  getItem(midiID: string, name: string){
-   return this.http.get(this.dataUrl+'?midiID='+ midiID );
+  getItem(midiID: Observable<Imusic>){
+   return this.http.get('https://us-east1-pianocrumbs-258021.cloudfunctions.net/get-song/midiID');
   }
 
 }
