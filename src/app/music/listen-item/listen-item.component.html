@@ -6,7 +6,8 @@
 
 
 <ul >
-    <li>{{items$.midiID | async}} </li>
-    <li>{{items$.name | async}} </li>
+
+    <li>{{(items$ | async).midiID}} </li>
+    <li>{{(items$ | async).name }} </li> 
     
 </ul>
