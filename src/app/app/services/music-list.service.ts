@@ -53,4 +53,6 @@ export class MusicListService {
   getViewed(){
     return this.itemSelectedAction.asObservable();
   }
+
+  
 }

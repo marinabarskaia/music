@@ -5,6 +5,8 @@ import {
   Imusic
 } from "../../app/services/music-list.service";
 import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { stringify } from "querystring";
 
 @Component({
   selector: "app-listen-item",
@@ -13,10 +15,10 @@ import { Observable } from "rxjs";
 })
 export class ListenItemComponent implements OnInit {
   item$: Observable<Imusic>;
+  selected: any;
 
   constructor(
     private musicService: MusicListService,
-    //private router: Router,
     private route: ActivatedRoute
   ) {}
 
@@ -27,8 +29,15 @@ export class ListenItemComponent implements OnInit {
 
     this.musicService.getViewed().subscribe(data => {
       this.item$.midiID = data;
-      alert("from getViewed=== "  + data);
+      //alert("from getViewed=== " + data);
     });
-   
   }
+
+  isSelected(midiID: string): Observable<Boolean> {
+    return this.musicService.getViewed()
+      .map(data => data == this.item$.midiID);
+         
+
+  }
+  
 }
